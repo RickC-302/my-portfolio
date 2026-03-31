@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&family=Be+Vietnam+Pro:wght@300..700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-label: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
+
+  --color-primary: #163422;
+  --color-primary-container: #2d4b37;
+  --color-on-primary: #ffffff;
+  
+  --color-secondary: #79573f;
+  --color-secondary-container: #ffd1b3;
+  --color-on-secondary-container: #7a5840;
+
+  --color-tertiary: #725c00;
+  --color-tertiary-container: #cca800;
+  --color-tertiary-fixed: #ffe07d;
+  --color-on-tertiary-fixed: #231b00;
+
+  --color-surface: #f7f9ff;
+  --color-on-surface: #0d1d2a;
+  --color-on-surface-variant: #424843;
+  --color-surface-container: #e2efff;
+  --color-surface-container-low: #ecf4ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-high: #d9eafc;
+  --color-surface-container-highest: #d4e4f6;
+  --color-surface-dim: #cbdcee;
+  --color-surface-bright: #f7f9ff;
+  --color-surface-variant: #d4e4f6;
+
+  --color-outline: #727972;
+  --color-outline-variant: #c2c8c0;
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-body;
+  }
+}
+
+.annotation-text {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-style: italic;
+  transform: rotate(-1.5deg);
+}
+
+.sketch-underline {
+  position: relative;
+}
+
+.sketch-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 4px;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='10' viewBox='0 0 100 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 8C20 2 80 2 99 8' stroke='%23725c00' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+}
