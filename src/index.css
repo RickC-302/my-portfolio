@@ -1,38 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&family=Be+Vietnam+Pro:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Caveat:wght@400;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-headline: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-headline: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-label: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
+  --font-label: "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  --color-primary: #163422;
-  --color-primary-container: #2d4b37;
+  --color-primary: #0f172a;
+  --color-primary-container: #e2e8f0;
   --color-on-primary: #ffffff;
   
-  --color-secondary: #79573f;
-  --color-secondary-container: #ffd1b3;
-  --color-on-secondary-container: #7a5840;
+  --color-secondary: #4c51bf;
+  --color-secondary-container: #e9d8fd;
+  --color-on-secondary-container: #312e81;
 
-  --color-tertiary: #725c00;
-  --color-tertiary-container: #cca800;
-  --color-tertiary-fixed: #ffe07d;
-  --color-on-tertiary-fixed: #231b00;
+  --color-tertiary: #1d4ed8;
+  --color-tertiary-container: #dbeafe;
+  --color-tertiary-fixed: #c7d2fe;
+  --color-on-tertiary-fixed: #1e293b;
 
-  --color-surface: #f7f9ff;
-  --color-on-surface: #0d1d2a;
-  --color-on-surface-variant: #424843;
-  --color-surface-container: #e2efff;
-  --color-surface-container-low: #ecf4ff;
+  --color-surface: #F8FAFC;
+  --color-on-surface: #0f172a;
+  --color-on-surface-variant: #475569;
+  --color-surface-container: #ffffff;
+  --color-surface-container-low: #ffffff;
   --color-surface-container-lowest: #ffffff;
-  --color-surface-container-high: #d9eafc;
-  --color-surface-container-highest: #d4e4f6;
-  --color-surface-dim: #cbdcee;
-  --color-surface-bright: #f7f9ff;
-  --color-surface-variant: #d4e4f6;
+  --color-surface-container-high: #eef2ff;
+  --color-surface-container-highest: #e2e8f0;
+  --color-surface-dim: #cbd5e1;
+  --color-surface-bright: #f8fafc;
+  --color-surface-variant: #cbd5e1;
 
-  --color-outline: #727972;
-  --color-outline-variant: #c2c8c0;
+  --color-outline: #cbd5e1;
+  --color-outline-variant: #e2e8f0;
 }
 
 @layer base {
@@ -42,9 +42,26 @@
 }
 
 .annotation-text {
-  font-family: 'Be Vietnam Pro', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-style: italic;
   transform: rotate(-1.5deg);
+}
+
+.handwriting {
+  font-family: 'Caveat', cursive;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform: translateY(4px);
+}
+
+.group:hover .handwriting,
+.group:focus-within .handwriting {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-surface {
+  @apply bg-white border border-slate-100 shadow-sm rounded-[28px];
 }
 
 .sketch-underline {
@@ -58,6 +75,6 @@
   bottom: -4px;
   width: 100%;
   height: 4px;
-  background: url("data:image/svg+xml,%3Csvg width='100' height='10' viewBox='0 0 100 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 8C20 2 80 2 99 8' stroke='%23725c00' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background: url("data:image/svg+xml,%3Csvg width='100' height='10' viewBox='0 0 100 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 8C20 2 80 2 99 8' stroke='%230f172a' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
   background-size: 100% 100%;
 }

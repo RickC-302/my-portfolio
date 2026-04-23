@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { BookOpen, Play, Baby, School, History, ChevronRight, Lock, Pencil, CheckCircle, FileText, X } from 'lucide-react';
 import { cn } from '../lib/utils';
+
 
 const subjects = [
   { 
@@ -10,12 +11,12 @@ const subjects = [
     content: `
       <div class="space-y-6 font-body text-on-surface">
         <h1 class="text-3xl font-headline font-black text-primary border-b-2 border-tertiary pb-2">IT Fundamentals: 核心架構</h1>
-        <p class="italic text-on-surface-variant">這份教材將帶領你從最底層的計算機原理開始，理解資料是如何在硬體與軟體之間流動的。</p>
-        
+        <p class="italic text-on-surface-variant">這不是一堂純語法課，這是讓你看透系統如何流動的底層地圖。</p>
+
         <section class="space-y-4">
           <h2 class="text-xl font-headline font-bold text-primary">1. 馮紐曼架構 (Von Neumann Architecture)</h2>
           <p>理解 CPU、記憶體 (RAM) 與輸入/輸出設備之間的協作關係。這是所有現代電腦的基礎。</p>
-          <div class="bg-surface-container-low p-4 border-l-4 border-primary">
+          <div class="bg-slate-100 p-4 border-l-4 border-primary">
             <ul class="list-disc list-inside space-y-2 text-sm">
               <li>控制單元 (Control Unit)</li>
               <li>算術邏輯單元 (ALU)</li>
@@ -25,14 +26,17 @@ const subjects = [
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-xl font-headline font-bold text-primary">2. 二進位與資料表示</h2>
-          <p>為什麼電腦只認識 0 與 1？我們如何用 0 與 1 表示文字、圖片與聲音？</p>
-          <p class="text-sm">從 Bit 到 Byte，再到更高層級的資料結構，這是一場抽象化的旅程。</p>
+          <h2 class="text-xl font-headline font-bold text-primary">2. 資料流與系統協作</h2>
+          <p>每個網頁的「登入」功能，背後都是這三者在協作。你將看到資料如何從使用者、伺服器到資料庫流動。</p>
+          <p class="text-sm">小練習：試著畫出電腦架構圖，標出資料進出的路徑。</p>
         </section>
 
-        <div class="mt-12 p-6 bg-tertiary-container/30 rounded-sm italic text-sm">
-          "Understanding the 'Why' behind the hardware makes the 'How' of software much clearer." - Ivan
-        </div>
+        <section class="space-y-4">
+          <h2 class="text-xl font-headline font-bold text-primary">3. 學生作品</h2>
+          <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 text-sm">
+          學生作品展示： [Placeholder: 學生繪製的電腦架構]
+          </div>
+        </section>
       </div>
     `
   },
@@ -42,21 +46,33 @@ const subjects = [
     content: `
       <div class="space-y-6 font-body text-on-surface">
         <h1 class="text-3xl font-headline font-black text-primary border-b-2 border-tertiary pb-2">Web Development: 網頁三劍客</h1>
-        <p class="italic text-on-surface-variant">結構、樣式與行為：理解網頁是如何被構建並賦予生命的。</p>
-        
+        <p class="italic text-on-surface-variant">理解結構、樣式與互動，讓網頁成為真實可操控的產品。</p>
+
         <section class="space-y-4">
-          <h2 class="text-xl font-headline font-bold text-primary">1. HTML5: 語意化結構</h2>
-          <p>不只是 &lt;div&gt;。學習使用 &lt;header&gt;, &lt;main&gt;, &lt;article&gt; 等標籤來建立對搜尋引擎與輔助技術友善的網頁。</p>
+          <h2 class="text-xl font-headline font-bold text-primary">1. HTML / CSS / JS 的協作</h2>
+          <p>結構、樣式與行為不是獨立的，它們共同決定使用者是否能愉快地使用你的網頁。</p>
+        </section>
+
+        <section class="space-y-4 bg-slate-50 p-4 rounded-3xl border border-slate-200">
+          <h2 class="text-xl font-headline font-bold text-primary">2. 專業筆記</h2>
+          <pre class="bg-white p-4 rounded-xl text-sm overflow-x-auto border border-slate-200">
+&lt;button id="magic-btn"&gt;點我！&lt;/button&gt;
+
+&lt;script&gt;
+  // JS: 賦予按鈕靈魂
+  document.getElementById('magic-btn').onclick = () =&gt; {
+    alert('Hello World! 你觸發了一個事件！');
+  };
+&lt;/script&gt;
+          </pre>
+          <p class="text-sm">這段簡單的互動示範了事件監聽與 DOM 操作，從靜態畫面變成交互體驗。</p>
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-xl font-headline font-bold text-primary">2. CSS3: 佈局與美學</h2>
-          <p>從 Box Model 到 Flexbox 與 Grid。掌握現代佈局技術，讓你的設計在任何螢幕上都能完美呈現。</p>
-        </section>
-
-        <section class="space-y-4">
-          <h2 class="text-xl font-headline font-bold text-primary">3. JavaScript: 互動的核心</h2>
-          <p>DOM 操作、事件監聽與非同步請求。讓你的網頁不再只是靜態文件，而是具備靈魂的應用程式。</p>
+          <h2 class="text-xl font-headline font-bold text-primary">3. 學生作品</h2>
+          <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 text-sm">
+          學生作品展示： [Placeholder: 學生設計的網頁]
+          </div>
         </section>
       </div>
     `
@@ -67,22 +83,36 @@ const subjects = [
     content: `
       <div class="space-y-6 font-body text-on-surface">
         <h1 class="text-3xl font-headline font-black text-primary border-b-2 border-tertiary pb-2">Roblox Studio: 遊戲開發入門</h1>
-        <p class="italic text-on-surface-variant">從玩家變身創作者：在 3D 世界中實踐你的創意。</p>
+        <p class="italic text-on-surface-variant">從遊戲玩家轉為創作者，體驗互動內容背後的邏輯。</p>
+
+        <section class="space-y-4">
+          <h2 class="text-xl font-headline font-bold text-primary">1. 基礎零件與事件</h2>
+          <p>掌握 Workspace、Explorer 與 Properties。學會放置零件、調整位置與屬性。</p>
+        </section>
+
+        <section class="space-y-4 bg-slate-50 p-4 rounded-3xl border border-slate-200">
+          <h2 class="text-xl font-headline font-bold text-primary">2. Lua 腳本專業筆記</h2>
+          <pre class="bg-white p-4 rounded-xl text-sm overflow-x-auto border border-slate-200">
+-- 讓一個方塊碰觸後消失的簡單邏輯
+local part = script.Parent
+
+part.Touched:Connect(function(otherPart)
+    print("有人踩到我了！")
+    part.Transparency = 1 -- 變透明
+    part.CanCollide = false -- 變穿透
+end)
+          </pre>
+          <p class="text-sm">小練習：嘗試在代碼中加入 wait(3)，讓方塊在消失 3 秒後重新出現。</p>
+          <p class="text-sm">現實例子：遊戲中的「陷阱」或「傳送門」就是這樣寫出來的。</p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-xl font-headline font-bold text-primary">3. 學生作品</h2>
+          <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 text-sm">
+          學生作品展示： [Placeholder: 學生製作的小關卡]
+          </div>
+        </section>
         
-        <section class="space-y-4">
-          <h2 class="text-xl font-headline font-bold text-primary">1. 環境搭建與零件操作</h2>
-          <p>熟悉 Workspace, Explorer 與 Properties 面板。學習如何放置、旋轉與縮放零件 (Parts)。</p>
-        </section>
-
-        <section class="space-y-4">
-          <h2 class="text-xl font-headline font-bold text-primary">2. Lua 腳本基礎</h2>
-          <p>變數、函數與事件。學習如何讓零件在玩家觸碰時變色，或建立一個簡單的傳送門。</p>
-        </section>
-
-        <section class="space-y-4">
-          <h2 class="text-xl font-headline font-bold text-primary">3. 遊戲循環與發佈</h2>
-          <p>理解伺服器與客戶端的關係，並將你的作品發佈到 Roblox 平台與全世界分享。</p>
-        </section>
       </div>
     `
   },
@@ -92,22 +122,34 @@ const subjects = [
     content: `
       <div class="space-y-6 font-body text-on-surface">
         <h1 class="text-3xl font-headline font-black text-primary border-b-2 border-tertiary pb-2">Python Mastery: 邏輯與自動化</h1>
-        <p class="italic text-on-surface-variant">簡潔、強大且無處不在：掌握最受歡迎的通用程式語言。</p>
-        
-        <section class="space-y-4">
-          <h2 class="text-xl font-headline font-bold text-primary">1. 語法基礎與資料類型</h2>
-          <p>理解 Python 的縮排美學。掌握 List, Dictionary, Tuple 等強大的內建資料結構。</p>
+        <p class="italic text-on-surface-variant">讓軟體幫你處理重複工作，讓你專注於核心想法。</p>
+
+        <section class="space-y-4 bg-slate-50 p-4 rounded-3xl border border-slate-200">
+          <h2 class="text-xl font-headline font-bold text-primary">1. 專業筆記</h2>
+          <pre class="bg-white p-4 rounded-xl text-sm overflow-x-auto border border-slate-200">
+# 簡單的打招呼自動化
+def welcome_guest(name):
+    print(f"你好, {name}! 準備好開始編程之旅了嗎？")
+
+students = ["Alice", "Bob", "Ivan"]
+for s in students:
+    welcome_guest(s)
+          </pre>
+          <p class="text-sm">這段程式示範如何把重複工作自動化，讓輸入與輸出流程更有節奏。</p>
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-xl font-headline font-bold text-primary">2. 函數與模組化</h2>
-          <p>學習如何編寫可重用的代碼塊。理解模組 (Modules) 與包 (Packages) 的概念，站在巨人的肩膀上開發。</p>
+          <h2 class="text-xl font-headline font-bold text-primary">2. 小練習</h2>
+          <p class="text-sm">寫一個可以計算 1 加到 100 總和的小程式。</p>
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-xl font-headline font-bold text-primary">3. 實戰應用：爬蟲與自動化</h2>
-          <p>利用 Python 處理 Excel、抓取網頁資料，將重複性的枯燥工作交給電腦處理。</p>
+          <h2 class="text-xl font-headline font-bold text-primary">3. 學生作品</h2>
+          <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 text-sm">
+          學生作品展示： [Placeholder: 學生寫的自動化計數器]
+          </div>
         </section>
+
       </div>
     `
   }
@@ -118,52 +160,59 @@ export default function Teaching() {
 
   const currentSubject = subjects.find(s => s.id === selectedSubject);
 
+  const teachingSectionRef = useRef<HTMLDivElement>(null);
+
+  const scrollToTeaching = () => {
+    teachingSectionRef.current?.scrollIntoView({ 
+      behavior: 'smooth', 
+      block: 'start' 
+    });
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-8 pt-20 pb-32">
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-32 items-start">
         <div className="lg:col-span-7">
-          <div className="mb-4 inline-block bg-secondary-container text-on-secondary-container px-3 py-1 rounded-sm font-label text-xs uppercase font-bold tracking-widest">
-            Featured Course
+          <div className="mb-4 inline-block bg-slate-100 text-primary px-3 py-1 rounded-full font-label text-xs uppercase font-bold tracking-widest">
+            學習與教學
           </div>
           <h1 className="text-6xl md:text-8xl font-black font-headline tracking-tighter text-primary leading-[0.9] mb-8">
-            Foundations of Systems Thinking
+            系統思維與底層邏輯
           </h1>
           <p className="text-xl text-on-surface-variant max-w-xl mb-10 leading-relaxed">
-            這不是一門單純的語法課。我們將從「系統思維」出發，拆解邏輯架構，讓你掌握程式開發最核心的底層邏輯，才有能力分辨 AI 的 output 對與錯，建立受用一生的解決問題能力。
+            「學會點樣思考，比學會語法更重要。」我們將從「系統思維」出發，拆解邏輯架構，讓你掌握程式開發最核心的底層邏輯，才有能力分辨 AI 的對與錯，建立受用一生的解決問題能力。
           </p>
           
-          <div className="relative bg-surface-container-low p-8 rounded-sm mt-12 border-l-4 border-tertiary shadow-sm">
-            <div className="absolute -top-4 -right-2 rotate-[-2deg] bg-tertiary-fixed text-on-tertiary-fixed font-label text-xs px-2 py-1 font-bold shadow-sm">
-              IVAN'S NOTES
+          <div className="relative bg-white p-8 rounded-[28px] mt-12 border border-slate-100 shadow-sm">
+            <div className="absolute -top-4 -right-2 -rotate-2 bg-slate-100 text-primary font-label text-xs px-2 py-1 font-bold shadow-sm">
+              個人化筆記
             </div>
             <h3 className="font-headline font-bold text-xl text-primary mb-4 flex items-center gap-2">
               <BookOpen className="text-tertiary" />
-              Tutor's Note: Why Coding?
+              1-on-1 導師指導：帶你跟上我的步調
             </h3>
             <p className="font-body text-on-surface italic leading-relaxed">
-              「寫程式的本質並非與機器對話，而是與『邏輯』共舞。當你理解了系統是如何流動的，你會發現，程式語言只是你用來描述這個世界的工具之一。我希望教給你的，是看透複雜問題、並將其模組化的能力。」
+              我不只教你寫程式，更教你如何思考。我擅長將艱澀的底層邏輯拆解成易懂的故事，讓你不再迷失於代碼海洋，而是有節奏地建立屬於你的技術版圖。
             </p>
             <div className="mt-6 flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-primary-container overflow-hidden">
+              <div className="w-10 h-10 rounded-full bg-slate-100 overflow-hidden">
                 <img 
                   className="w-full h-full object-cover" 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6AeRqgAhzZxOkw3mQMfzdWKXzbEDNG8AhE0YrjLk_lzeu_fuLrBAz7IfiutNUK-pW2Un_ikZEZirCe7SUYGH_01OwM2z_E6C5xJlgmUP1tAw1z7Mckxra4LQPeEih1YtTUPObU0y3I3Eoay8QyzWhpkztxBXqeY2mEI9o2wvzRiMr2EBjIQ9Z3fbWAo4FcFjymHRWPaIGZfvSfjLNg9-75EbbWdO-5jlzOzqrSjzZD0DYIn-wgGtYgG4LxQtA7YP5tOVYaTWXqANX"
-                  referrerPolicy="no-referrer"
+                  src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=500&q=80"
                 />
               </div>
               <div>
-                <div className="font-bold text-primary font-headline">Ivan Chen</div>
+                <div className="font-bold text-primary font-headline">Ivan Lam</div>
                 <div className="text-xs text-on-surface-variant uppercase font-label tracking-tighter">Last Year University Student | Mentor</div>
               </div>
             </div>
           </div>
         </div>
         <div className="lg:col-span-5 relative">
-          <div className="bg-surface-container-high aspect-[4/5] rounded-sm overflow-hidden relative group">
+          <div className="bg-surface-container-high aspect-4/5 rounded-sm overflow-hidden relative group">
             <img 
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQWJPe0k83uJFCU4zGi_WP3gV8DQJ8w0-GOk3DTFbG6tcFHY58Asa3zOGNSf16L4cv6N8ISGUGrFic6JTS7em0EIqYUBcEfpgzCFeKd7srJSUfAPsUykAJDwb_lXVQlUCkKEo5XM-WPlgO6VDgmu0bQtHGiH1lg0VnJV4wcqf3JfR8o8auAhAwkre1LNzVcJbVMj1MgEmGp-WfhUFzpjfv2e5wQOS_fjmm7cuPvMUjp7AnEVZLqrwV4fHt3tLPTYBx81mNP5B8sK0-"
-              referrerPolicy="no-referrer"
+              src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80"
             />
             <div className="absolute inset-0 bg-primary/20 mix-blend-multiply"></div>
             <div className="absolute bottom-8 left-8 right-8 bg-surface/90 backdrop-blur-sm p-6 shadow-xl border-t-2 border-tertiary">
@@ -172,8 +221,11 @@ export default function Teaching() {
                   <div className="text-tertiary font-label text-xs font-bold uppercase mb-1">Previewing</div>
                   <div className="text-primary font-headline text-2xl font-bold">課程大綱：邏輯架構篇</div>
                 </div>
-                <button className="bg-primary text-on-primary p-3 rounded-full flex items-center justify-center">
-                  <Play />
+                <button 
+                  onClick={scrollToTeaching}
+                  className="bg-primary text-on-primary p-3 rounded-full flex items-center justify-center transition-transform hover:scale-110 active:scale-95 shadow-lg shadow-primary/20"
+                >
+                  <Play fill="currentColor" />
                 </button>
               </div>
             </div>
@@ -183,48 +235,61 @@ export default function Teaching() {
       </section>
 
       <section className="mb-32">
-        <div className="bg-on-surface p-12 md:p-20 text-on-primary-fixed relative overflow-hidden">
-          <div className="relative z-10">
-            <h2 className="text-4xl md:text-5xl font-black font-headline tracking-tight text-surface mb-6">學習診斷 <span className="text-tertiary-fixed">/ Diagnosis</span></h2>
-            <p className="text-surface-variant max-w-2xl mb-12 text-lg">
-              讓我們根據你目前的身分與目標，為你量身打造最合適的學習地圖。請選擇最符合你的現狀：
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <button className="text-left group bg-surface/10 hover:bg-tertiary p-8 transition-all duration-300 border border-surface-variant/20">
-                <Baby className="text-tertiary-fixed group-hover:text-surface mb-6 block text-4xl" size={40} />
-                <div className="text-2xl font-headline font-bold text-surface mb-2">Zero Basis</div>
-                <div className="text-surface-variant/80 font-label text-sm uppercase mb-4 tracking-widest">零基礎小白</div>
-                <p className="text-surface-variant text-sm leading-relaxed group-hover:text-surface/90">
-                  從認識計算機科學開始，建立基礎運算思維。專屬推薦：基礎網頁開發與邏輯拼圖課程。
-                </p>
-              </button>
-              <button className="text-left group bg-surface/10 hover:bg-tertiary p-8 transition-all duration-300 border border-surface-variant/20">
-                <School className="text-tertiary-fixed group-hover:text-surface mb-6 block text-4xl" size={40} />
-                <div className="text-2xl font-headline font-bold text-surface mb-2">Primary Student</div>
-                <div className="text-surface-variant/80 font-label text-sm uppercase mb-4 tracking-widest">中小學生</div>
-                <p className="text-surface-variant text-sm leading-relaxed group-hover:text-surface/90">
-                  透過趣味專案激發創造力。推薦：Roblox 遊戲開發、Python 基礎。
-                </p>
-              </button>
-              <button className="text-left group bg-surface/10 hover:bg-tertiary p-8 transition-all duration-300 border border-surface-variant/20">
-                <School className="text-tertiary-fixed group-hover:text-surface mb-6 block text-4xl" size={40} />
-                <div className="text-2xl font-headline font-bold text-surface mb-2">University Student</div>
-                <div className="text-surface-variant/80 font-label text-sm uppercase mb-4 tracking-widest">大學生/初學者</div>
-                <p className="text-surface-variant text-sm leading-relaxed group-hover:text-surface/90">
-                  專注於基礎鞏固。推薦：IT Fundamentals、基礎算法與數據結構、網頁開發入門。
-                </p>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+  <div className="bg-orange-50/20 p-12 md:p-20 relative overflow-hidden rounded-3xl border border-slate-400">
+    
+    <div className="relative z-10">
+      <h2 className="text-4xl md:text-6xl font-black font-headline tracking-tighter text-slate-900 mb-6">
+        學習診斷 <span className="text-primary font-light">/ Diagnosis</span>
+      </h2>
+      <p className="text-slate-500 max-w-2xl mb-16 text-lg font-medium leading-relaxed">
+        讓我們根據你目前的身分與目標，為你量身打造最合適的學習地圖。
+      </p>
 
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* 卡片模板 */}
+        {[
+          { id: 'zero', title: 'Zero Basis', sub: '零基礎小白', desc: '從認識計算機科學開始，建立基礎運算思維。專屬推薦：基礎網頁開發與邏輯拼圖課程。', icon: Baby },
+          { id: 'primary', title: 'Primary Student', sub: '中小學生', desc: '透過趣味專案激發創造力。推薦：Roblox 遊戲開發、Python 基礎。', icon: School },
+          { id: 'uni', title: 'University Student', sub: '大學生/初學者', desc: '專注於基礎鞏固。推薦：IT Fundamentals、基礎算法與數據結構、網頁開發入門。', icon: School }
+        ].map((item) => (
+          <button 
+            key={item.id}
+            className="text-left group bg-white hover:bg-primary p-10 transition-all duration-500 rounded-[2rem] border border-orange-100 shadow-sm hover:shadow-2xl hover:shadow-primary/30 relative overflow-hidden"
+          >
+            <item.icon 
+              className="text-primary group-hover:text-orange-200 mb-8 transition-colors duration-300" 
+              size={48} 
+              strokeWidth={1.5}
+            />
+            
+            <div className="text-2xl font-black font-headline text-slate-900 group-hover:text-white mb-2 transition-colors duration-300 tracking-tight">
+              {item.title}
+            </div>
+            
+            <div className="text-primary font-bold text-xs uppercase mb-6 tracking-[0.2em] group-hover:text-orange-200 transition-colors duration-300">
+              {item.sub}
+            </div>
+            
+            <p className="text-slate-600 text-sm leading-relaxed group-hover:text-white transition-colors duration-300 font-medium">
+              {item.desc}
+            </p>
+
+            <span className="handwriting absolute bottom-4 right-6 text-white/20 text-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+              Let's go!
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+      <section ref={teachingSectionRef} className="grid grid-cols-1 lg:grid-cols-12 gap-16">
         <div className="lg:col-span-4">
           <div className="sticky top-32">
             <h3 className="text-3xl font-black font-headline tracking-tight text-primary mb-10 flex items-center gap-4">
               教學範疇
-              <span className="h-[2px] flex-grow bg-surface-container-highest"></span>
+              <span className="h-0.5 grow bg-surface-container-highest"></span>
             </h3>
             <ul className="space-y-4">
               {subjects.map((subject, i) => (
@@ -253,13 +318,35 @@ export default function Teaching() {
                 </li>
               ))}
             </ul>
-            <div className="mt-12 p-6 bg-tertiary-container text-on-tertiary-container rounded-sm">
-              <div className="font-headline font-black text-2xl mb-2 italic">Need a 1-on-1 session?</div>
-              <p className="text-sm opacity-80 mb-6">歡迎預約線上或實體家教諮詢，為你客製化學習進度。</p>
-              <button className="w-full border-2 border-on-tertiary-container py-3 font-bold font-headline uppercase hover:bg-on-tertiary-container hover:text-white transition-colors">預約諮詢</button>
+
+            <div className="mt-16 relative">
+              <div className="absolute inset-0 bg-primary translate-x-2 translate-y-2 rounded-xl"></div>
+
+              <div className="relative bg-white border-4 border-slate-900 p-8 md:p-10 rounded-xl shadow-2xl">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+                  <div className="max-w-md">
+                    <div className="font-headline font-black text-3xl md:text-4xl mb-3 italic tracking-tighter text-slate-900 uppercase">
+                      Need a<br></br>1-on-1<br></br> session?
+                    </div>
+                    <p className="text-slate-600 font-medium leading-relaxed">
+                      歡迎預約線上或實體家教諮詢，為你客製化學習進度。<br/>
+                      <span className="inline-flex items-center gap-2 mt-2 text-sm font-bold text-slate-400">
+                        <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                        支援實體 (香港) 或 Zoom 授課
+                      </span>
+                    </p>
+                  </div>
+
+                  <button className="rounded-xl group relative bg-slate-900 text-white px-10 py-5 font-black font-headline uppercase tracking-widest overflow-hidden transition-all hover:pr-14 active:scale-95">
+                    <span className="relative z-10">預約諮詢</span>
+                    <div className="absolute inset-0 bg-orange-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        
         <div className="lg:col-span-8">
           <AnimatePresence mode="wait">
             <motion.div
@@ -275,7 +362,7 @@ export default function Teaching() {
                   <span className="font-headline font-bold text-primary uppercase tracking-widest text-sm">教材預覽：{currentSubject?.name}</span>
                 </div>
               </div>
-              <div className="p-12 overflow-y-auto flex-grow bg-[url('https://www.transparenttextures.com/patterns/paper.png')]">
+              <div className="p-12 overflow-y-auto grow bg-[url('https://www.transparenttextures.com/patterns/paper.png')]">
                 <div 
                   className="max-w-2xl mx-auto"
                   dangerouslySetInnerHTML={{ __html: currentSubject?.content || '' }}

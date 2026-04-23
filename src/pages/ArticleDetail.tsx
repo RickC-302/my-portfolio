@@ -71,8 +71,7 @@ export default function ArticleDetail() {
               <div className="w-12 h-12 rounded-full bg-primary-container overflow-hidden">
                 <img 
                   className="w-full h-full object-cover" 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6AeRqgAhzZxOkw3mQMfzdWKXzbEDNG8AhE0YrjLk_lzeu_fuLrBAz7IfiutNUK-pW2Un_ikZEZirCe7SUYGH_01OwM2z_E6C5xJlgmUP1tAw1z7Mckxra4LQPeEih1YtTUPObU0y3I3Eoay8QyzWhpkztxBXqeY2mEI9o2wvzRiMr2EBjIQ9Z3fbWAo4FcFjymHRWPaIGZfvSfjLNg9-75EbbWdO-5jlzOzqrSjzZD0DYIn-wgGtYgG4LxQtA7YP5tOVYaTWXqANX"
-                  referrerPolicy="no-referrer"
+                  src="https://images.unsplash.com/photo-1517502166878-35c93a0072bb?auto=format&fit=crop&w=200&q=80"
                 />
               </div>
               <div>

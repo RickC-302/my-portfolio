@@ -19,8 +19,7 @@ export default function Projects() {
           <img 
             alt="Drafting tools" 
             className="w-full h-full object-cover filter grayscale contrast-125" 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd9QsrivCmsMiswIkaNpHik_GLUg_7zpxG1IDLusr5swTt78WVffDiRonqYthk8ajcxlQWxkmE7ky6iZNqL1YoOGJtavZ-vH-oPnorD0VYCSEG4zAdmkN0Omhr6PwYa0hnmWBiwqzNV_1zpeVl4DUbBx-QSlzvwUgD3yMpGmPvufAF08-eOoZc7mTtfJN58-GDWQmxFNfruwdow-LvgDxeLDUSU16jxbhjJ65ySVI6qCLgBRrE6pxupfX46AZ6sA3-NYTs9xL8zAvM"
-            referrerPolicy="no-referrer"
+            src="https://images.unsplash.com/photo-1521790797524-b2497295b8a0?auto=format&fit=crop&w=1000&q=80"
           />
           <div className="absolute -bottom-2 -left-2 bg-tertiary text-on-tertiary p-3 rotate-3 font-label text-xs">
             ARCHIVE NO. 2024-DEV
