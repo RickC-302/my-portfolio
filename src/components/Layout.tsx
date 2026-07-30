@@ -2,15 +2,17 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/src/lib/utils';
 
+type NavbarProps = {
+  onOpenContactForm: () => void;
+};
+
 const navLinks = [
   { name: '首頁', path: '/' },
   { name: '個人專案', path: '/side-projects' },
   { name: '學習與教學', path: '/teaching' },
-  { name: '專案開發', path: '/projects' },
-  { name: 'SISU 小角落', path: '/sisu-corner' },
 ];
 
-export function Navbar() {
+export function Navbar({ onOpenContactForm }: NavbarProps) {
   const location = useLocation();
 
   return (
@@ -38,7 +40,11 @@ export function Navbar() {
             );
           })}
         </div>
-        <button className="border border-slate-200 text-primary px-6 py-2 rounded-full font-headline font-semibold text-sm uppercase hover:bg-slate-100 transition-all">
+        <button
+          type="button"
+          onClick={onOpenContactForm}
+          className="border border-slate-200 text-primary px-6 py-2 rounded-full font-headline font-semibold text-sm uppercase hover:bg-slate-100 transition-all"
+        >
           聯絡我
         </button>
       </div>
@@ -54,8 +60,8 @@ export function Footer() {
           © 2026, Ivan Personal Website.
         </div>
         <div className="flex gap-8">
-          <a href="#" className="text-on-primary/80 font-body text-sm tracking-wide hover:text-tertiary underline decoration-wavy transition-all">GitHub</a>
-          <a href="#" className="text-on-primary/80 font-body text-sm tracking-wide hover:text-tertiary underline decoration-wavy transition-all">LinkedIn</a>
+          <a href="https://github.com/RickC-302" target="_blank" rel="noopener noreferrer" className="text-on-primary/80 font-body text-sm tracking-wide hover:text-tertiary underline decoration-wavy transition-all">GitHub</a>
+          <a href="https://www.linkedin.com/in/ivanlam2121/" target="_blank" rel="noopener noreferrer" className="text-on-primary/80 font-body text-sm tracking-wide hover:text-tertiary underline decoration-wavy transition-all">LinkedIn</a>
         </div>
       </div>
     </footer>
