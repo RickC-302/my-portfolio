@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <!-- 紫色漸層：從淺紫到深紫，製造立體光影 -->
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D8B4FE" />
+      <stop offset="50%" stop-color="#9333EA" />
+      <stop offset="100%" stop-color="#581C87" />
+    </linearGradient>
+    <linearGradient id="coreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3E8FF" />
+      <stop offset="100%" stop-color="#C084FC" />
+    </linearGradient>
+  </defs>
+
+  <!-- 外框八邊形 -->
+  <polygon points="30,2 70,2 98,30 98,70 70,98 30,98 2,70 2,30" fill="none" stroke="#4C1D95" stroke-width="4" stroke-linejoin="round" />
+
+  <!-- 第 1 層 -->
+  <polygon points="30,8 70,8 92,30 92,70 70,92 30,92 8,70 8,30" fill="url(#purpleGrad)" opacity="0.9" stroke="#3B0764" stroke-width="1.5" stroke-linejoin="round" />
+
+  <!-- 第 2 層 -->
+  <polygon points="30,14 70,14 86,30 86,70 70,86 30,86 14,70 14,30" fill="#E9D5FF" opacity="0.8" stroke="#7E22CE" stroke-width="1" stroke-linejoin="round" />
+
+  <!-- 第 3 層 -->
+  <polygon points="30,20 70,20 80,30 80,70 70,80 30,80 20,70 20,30" fill="url(#purpleGrad)" opacity="0.7" stroke-linejoin="round" />
+
+  <!-- 第 4 層 -->
+  <polygon points="30,26 70,26 74,30 74,70 70,74 30,74 26,70 26,30" fill="#F3E8FF" opacity="0.6" stroke-linejoin="round" />
+
+  <!-- 第 5 層 -->
+  <polygon points="30,32 70,32 68,30 68,70 70,68 30,68 32,70 32,30" fill="url(#purpleGrad)" opacity="0.8" stroke-linejoin="round" />
+
+  <!-- 第 6 層 -->
+  <polygon points="30,38 70,38 62,30 62,70 70,62 30,62 38,70 38,30" fill="#E9D5FF" opacity="0.9" stroke-linejoin="round" />
+
+  <!-- 第 7 層 -->
+  <polygon points="30,44 70,44 56,30 56,70 70,56 30,56 44,70 44,30" fill="url(#purpleGrad)" opacity="0.95" stroke-linejoin="round" />
+
+  <!-- 中心核心 -->
+  <polygon points="42,46 58,46 64,50 64,58 58,64 42,64 36,58 36,50" fill="url(#coreGrad)" stroke="#581C87" stroke-width="1.5" stroke-linejoin="round" />
+  <circle cx="50" cy="55" r="4" fill="#FFFFFF" />
+</svg>
