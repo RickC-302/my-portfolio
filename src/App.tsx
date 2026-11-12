@@ -28,7 +28,7 @@ export default function App() {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
 
   return (
-    <Router>
+    <Router basename="/my-portfolio">
       <div className="min-h-screen flex flex-col selection:bg-tertiary-fixed selection:text-on-tertiary-fixed">
         <ScrollToTop />
         <Navbar onOpenContactForm={() => setIsContactFormOpen(true)} />
@@ -48,4 +48,3 @@ export default function App() {
     </Router>
   );
 }
-
